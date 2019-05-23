@@ -1,0 +1,33 @@
+-- Alexander Nunez
+-- University of Florida
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity comp is
+    generic (
+        WIDTH : positive := 16);
+    port (
+		  in1      : in  std_logic_vector(WIDTH-1 downto 0);
+        in2      : in  std_logic_vector(WIDTH-1 downto 0);
+        lt : out std_logic;
+		  ne : out std_logic);
+end comp;
+
+architecture BHV of comp is
+begin
+	process(in1, in2)
+	begin
+		if (in1 < in2) then
+			lt <= '1';
+		else
+			lt <= '0';
+			if (in1 = in2) then
+				ne <= '0';
+			else
+				ne <= '1';
+			end if;
+		end if;
+	end process;
+end comp;

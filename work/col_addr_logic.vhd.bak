@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.vga_lib.all;
+
+entity col_addr_logic is
+	port (
+		Hcount : in std_logic_vector(9 downto 0);
+		Horiz_Sync, Video_On in std_logic;
+		col_en : out std_logic;
+		col_addr : out std_logic_vector(5 downto 0)
+	);
+end col_addr_logic;
+
+architecture BHV of col_addr_logic is
+begin
+	col_addr <= SHIFT_RIGHT(unsigned(Hcount),1);
+	col_en <= Horiz_Sync and Video_On;
+end BHV;

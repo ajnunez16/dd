@@ -1,0 +1,51 @@
+-- Greg Stitt
+-- University of Florida
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity quiz is
+	port (
+		clk, rst, load_n    : in  std_logic;
+		input : in std_logic_vector(3 downto 0);
+      output : out std_logic_vector(3 downto 0));
+end quiz;
+
+architecture BHV_UNSIGNED of quiz is
+    -- use a 4 bit unsigned instead of an integer.
+	signal count : unsigned(3 downto 0);
+   type state_type is (STATE_UP, STATE_DOWN)
+	signal state, next_state, prev_state : state_type;
+	
+begin
+   process(clk, rst)
+   begin
+		if (rst = '1') then
+			state <= STATE_UP;
+      elsif (rising_edge(clk)) then
+			state <=next_state;
+		end if;
+	end process;
+	
+	process(count, state)
+	begin
+		case state is
+			when STATE_UP =>
+				if (count = "1110") then
+					next_state <= STATE_DOWN;
+				end if;
+				count <= count + 1;
+			when STATE_DOWN =>
+				if (count = "0001") then
+					next_state <= STATE_UP;
+				end if;
+				count <= count - 1;
+			when others => null;
+	end process;
+
+    output <= std_logic_vector(count);
+       
+end BHV_UNSIGNED;
+
+

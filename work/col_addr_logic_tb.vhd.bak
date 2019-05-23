@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.vga_lib.all;
+
+entity col_addr_logic_tb is
+end col_addr_logic_tb;
+
+architecture TB of col_addr_logic_tb is
+	signal hcount : unsigned(9 downto 0);
+	signal button : unsigned(3 downto 0);
+	signal col : std_logic_vector(5 downto 0);
+begin
+	UUT : entity work.col_addr_logic
+		port map (
+			Hcount => std_logic_vector(hcount),
+			buttons => std_logic_vector(button),
+			col_addr => col);
+			
+	process
+	begin
+	
+		for i	in 0 to 15 loop
+			button <= to_unsigned( i, 4 );
+			for j in 0 to V_MAX loop
+				hcount <= to_unsigned( j, 10 );
+			end loop;
+		end loop;
+	end process;
+	
+end TB;

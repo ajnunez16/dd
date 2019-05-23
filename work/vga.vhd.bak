@@ -1,0 +1,109 @@
+-- Alexander Nunez
+-- University of Florida
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity top_level is
+    port (
+		  clk50MHz, rst : in  std_logic;
+        switch   : in  std_logic_vector(9 downto 0);
+        button   : in  std_logic_vector(1 downto 0);
+		  red, green, blue : out std_logic_vector(3 downto 0);
+		  h_sync, vsync : out std_logic);
+end top_level;
+
+architecture STR of top_level is
+
+	component VGA_sync_gen
+		port (
+			clk : in std_logic;
+			rst : in std_logic;
+			Hcount : out std_logic_vector(9 downto 0);
+			Vcount : out std_logic_vector(9 downto 0);
+			Horiz_Sync, Vert_Sync, Video_On : out std_logic);
+	end component;
+
+	component pix_clk
+    generic(clk_in_freq  : natural := 50000000;
+            clk_out_freq : natural := 25000000);
+    port (
+        clk  : in  std_logic;
+        pixel_clk : out std_logic;
+        rst     : in  std_logic);
+	end component;
+	
+	component row_addr_logic
+		port (
+			Vcount : in std_logic_vector(9 downto 0);
+			buttons : in std_logic_vector(3 downto 0);
+			row_addr : out std_logic_vector(5 downto 0));
+	end component;
+	
+	component col_addr_logic
+		port (
+			Hcount : in std_logic_vector(9 downto 0);
+			buttons : in std_logic_vector(3 downto 0);
+			col_addr : out std_logic_vector(5 downto 0));
+	end component;
+	
+	component vga_rom
+		port (
+			address	: IN STD_LOGIC_VECTOR (11 DOWNTO 0);
+			clock		: IN STD_LOGIC  := '1';
+			q			: OUT STD_LOGIC_VECTOR (11 DOWNTO 0));
+	end component;
+	
+	component mux2x1
+		generic (
+			width : positive := 12 );
+		port (
+			in1    : in  std_logic_vector(width-1 downto 0);
+			in2    : in  std_logic_vector(width-1 downto 0);
+			sel    : in  std_logic;
+			output : out std_logic_vector(width-1 downto 0));
+	end component;
+	
+	signal pix_clk, v_on : std_logic;
+	signal hcnt, vcnt : std_logic_vector(9 downto 0);
+	signal row, col : std_logic_vector(5 downto 0);
+	signal colors : std_logic_vector(11 downto 0);
+begin  -- STR
+
+	U_PIX : work.pix_clk port map (
+		clk => clk50MHz,
+		pixel_clk => pix_clk,
+		rst => button(1));
+		
+   U_VGA : work.VGA_sync_gen port map (
+		clk => pix_clk,
+		rst => button(1),
+		Hcount => hcnt,
+		Vcount => vcnt,
+		Horiz_Sync => h_sync,
+		Vert_Sync => v_sync,
+		Video_On => v_on);
+		
+	U_ROW : work.row_addr_logic port map (
+		Vcount => vcnt,
+		buttons => switch(3 downto 0),
+		row_addr => row);
+	
+	U_COL : work.col_addr_logic port map (
+		Hcount => hcnt,
+		buttons => switch(3 downto 0),
+		col_addr => col);
+	
+	U_ROM : work.vga_rom port map (
+		address => row & col,
+		clk => pix_clk,
+		q => colors);
+		
+	U_MUX : work.mux2x1 port map (
+		in1 => colors,
+		in2 => ( others => '0'),
+		sel => v_on,
+		output(11 downto 8) => red,
+		output(7 downto 4) => green,
+		output(3 downto 0) => blue);
+end STR;

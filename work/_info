@@ -1,0 +1,289 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/intelFPGA_lite/17.1
+Eadder
+Z1 w1548297885
+Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z3 DPx5 maxii 15 maxii_atom_pack 0 22 0AkPE6`BcAMTVDnhGOIT:1
+Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z5 DPx5 maxii 16 maxii_components 0 22 eRFH09VjTO<GE<HQHm1Nk1
+Z6 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z7 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z8 8C:/intelFPGA_lite/17.1/simulation/modelsim/Lab1.vho
+Z9 FC:/intelFPGA_lite/17.1/simulation/modelsim/Lab1.vho
+l0
+L34
+V2@b_Ui4ViXF;65;NKfH7m2
+!s100 2YUPaUZjb?`QZEMcJRXd:2
+Z10 OV;C;10.5b;63
+32
+Z11 !s110 1548299249
+!i10b 1
+Z12 !s108 1548299248.000000
+Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/intelFPGA_lite/17.1/simulation/modelsim/Lab1.vho|
+Z14 !s107 C:/intelFPGA_lite/17.1/simulation/modelsim/Lab1.vho|
+!i113 1
+Z15 o-work work -2002 -explicit
+Z16 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+Z17 DEx4 work 5 adder 0 22 2@b_Ui4ViXF;65;NKfH7m2
+l74
+L47
+VU;nD292FnNoVDScDkXdKm2
+!s100 e^oS5AT0hj<TXgF0;N54N2
+R10
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R15
+R16
+Eadder_tb
+Z18 w1548264466
+Z19 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R6
+R7
+R0
+Z20 8C:/Users/Aj/Downloads/adder_tb.vhd
+Z21 FC:/Users/Aj/Downloads/adder_tb.vhd
+l0
+L8
+VlNzV;BRTo_:<@RIU:K?>L1
+!s100 PDNPhQNIQ4JdmiNVWd5YI3
+R10
+32
+R11
+!i10b 1
+Z22 !s108 1548299249.000000
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Aj/Downloads/adder_tb.vhd|
+Z24 !s107 C:/Users/Aj/Downloads/adder_tb.vhd|
+!i113 1
+R15
+R16
+Atb
+R2
+R3
+R4
+R5
+R17
+R19
+R6
+R7
+Z25 DEx4 work 8 adder_tb 0 22 lNzV;BRTo_:<@RIU:K?>L1
+l16
+L11
+Z26 Vn^JjCSfc]loAPWMfo=8:N0
+Z27 !s100 2E?IVF`@j[8^@^TA`74R82
+R10
+32
+R11
+!i10b 1
+R22
+R23
+R24
+!i113 1
+R15
+R16
+Ecounter
+Z28 w1548265641
+R2
+R3
+R4
+R5
+R6
+R7
+R0
+R8
+R9
+l0
+L34
+V_GX29RA1l9Ke298]_^GIS0
+!s100 GJS[AGJOdDDUTE7o59J843
+R10
+32
+Z29 !s110 1548265725
+!i10b 1
+Z30 !s108 1548265724.000000
+R13
+R14
+!i113 1
+R15
+R16
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+Z31 DEx4 work 7 counter 0 22 _GX29RA1l9Ke298]_^GIS0
+l140
+L63
+Vabj8X_YFnm7a99M4ISblC3
+!s100 d_5?ogEA8fhIA37[z0FJ93
+R10
+32
+R29
+!i10b 1
+R30
+R13
+R14
+!i113 1
+R15
+R16
+Ecounter_tb
+Z32 w1548264383
+R19
+R6
+R7
+R0
+Z33 8C:/Users/Aj/Downloads/counter_tb.vhd
+Z34 FC:/Users/Aj/Downloads/counter_tb.vhd
+l0
+L8
+VS>Ya]0C>iIkha9`J>B87W3
+!s100 S1[Bdaelf6PZgfC@f;JDz2
+R10
+32
+R11
+!i10b 1
+R22
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Aj/Downloads/counter_tb.vhd|
+Z36 !s107 C:/Users/Aj/Downloads/counter_tb.vhd|
+!i113 1
+R15
+R16
+Atb
+R2
+R3
+R4
+R5
+R31
+R19
+R6
+R7
+DEx4 work 10 counter_tb 0 22 S>Ya]0C>iIkha9`J>B87W3
+l41
+L11
+VX@22A`2H047S_X2Q`[HZK0
+!s100 7AWDWjZMhg8JN4l[cj4C?3
+R10
+32
+R11
+!i10b 1
+R22
+R35
+R36
+!i113 1
+R15
+R16
+Efa
+Z37 w1548267911
+R2
+R3
+R4
+R5
+R6
+R7
+R0
+R8
+R9
+l0
+L34
+VJhO=W_@LeDj18oJ<6UA141
+!s100 0:zOoX^9]g[eQoUecc]DZ3
+R10
+32
+Z38 !s110 1548268402
+!i10b 1
+Z39 !s108 1548268401.000000
+R13
+R14
+!i113 1
+R15
+R16
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+Z40 DEx4 work 2 fa 0 22 JhO=W_@LeDj18oJ<6UA141
+l68
+L47
+V1EgKWR0D<>mm?e^G]jCXA0
+!s100 9V5iWgTBV7=:kLQz=5Pdz3
+R10
+32
+R38
+!i10b 1
+R39
+R13
+R14
+!i113 1
+R15
+R16
+Efa_tb
+Z41 w1548264484
+R19
+R6
+R7
+R0
+Z42 8C:/Users/Aj/Downloads/fa_tb.vhd
+Z43 FC:/Users/Aj/Downloads/fa_tb.vhd
+l0
+L8
+VI_3P48INb@BMb3ij>;@EP1
+!s100 3_abXP8hnMOG:JhJ230mZ2
+R10
+32
+R11
+!i10b 1
+R22
+Z44 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Aj/Downloads/fa_tb.vhd|
+Z45 !s107 C:/Users/Aj/Downloads/fa_tb.vhd|
+!i113 1
+R15
+R16
+Atb
+R2
+R3
+R4
+R5
+R40
+R19
+R6
+R7
+DEx4 work 5 fa_tb 0 22 I_3P48INb@BMb3ij>;@EP1
+l15
+L11
+V;71bgaGFnXX6ZEYW?:eG81
+!s100 FO=:8hk>d::o5CB`_T0@f0
+R10
+32
+R11
+!i10b 1
+R22
+R44
+R45
+!i113 1
+R15
+R16

@@ -1,0 +1,8 @@
+library ieee;
+use ieee.numeric_std.all;
+
+entity VGA_sync_gen is
+end VGA_sync_gen;
+
+architecture BHV of VGA_sync_gen is
+end BHV;

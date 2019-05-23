@@ -1,0 +1,39 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity gray2_tb is
+end gray2_tb;
+
+architecture TB of gray2_tb
+	type state_type is state (STATE_0, STATE_1, STATE_2, STATE_3, STATE_4, STATE_5, STATE_6, STATE_7, STATE_8, STATE_9, STATE_A, STATE_B, STATE_C, STATE_D, STATE_E, STATE_F);
+	signal state, next_state : state_type;
+	signal clk, rst, en : std_logic := '0';
+	signal output : std_logic_vector(3 downto 0);
+begin
+	U_GRAY2 : entity work.gray2
+		port map (
+			clk => clk,
+			rst => rst,
+			en => en,
+			output => output);
+	clk <= not clk after 5 ns;
+	
+	process
+	begin
+		rst <= '1';
+		en <= '0'
+		for i in 0 to 10 loop
+			wait until clk'event and clk = '1';
+		end loop;
+		rst <= '0';
+		wait until clk'event and clk = '1';
+		for i in 0 to 1000 loop
+			for j in 0 to 10 loop
+				en <= '1';
+				wait until clk'event and clk = '1';
+			end loop;	--j
+			en <= '0';
+			wait until clk'event and clk = '1';
+		end loop;	--i
+	end process;
+end TB;

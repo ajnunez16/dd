@@ -1,0 +1,12 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.vga_lib.all;
+
+entity row_addr_logic_tb is
+end row_addr_logic_tb;
+
+architecture TB of row_addr_logic_tb is
+begin
+	
+end TB;

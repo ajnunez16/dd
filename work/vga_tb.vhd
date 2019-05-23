@@ -1,0 +1,62 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.VGA_LIB.all;
+
+entity vga_tb is
+end vga_tb;
+
+architecture TB of vga_tb is
+
+  -- MODIFY TO MATCH YOUR TOP LEVEL
+  component vga
+	port (
+		  clk50MHz, rst : in  std_logic;
+        switch   : in  std_logic_vector(3 downto 0);
+		  red, green, blue : out std_logic_vector(3 downto 0);
+		  h_sync, v_sync : out std_logic);
+  end component;
+
+  signal clk, rst            : std_logic := '0';
+  signal switch_n 		: std_logic_vector(3 downto 0) := "1111";
+  signal red, green, blue : std_logic_vector(3 downto 0);
+  signal h_sync, v_sync   : std_logic;
+
+begin  -- TB
+
+  -- MODIFY TO MATCH YOUR TOP LEVEL
+  UUT : vga port map (
+    clk50MHz       => clk,
+	 rst => rst,
+    switch 	=> switch_n,
+    red       => red,
+    green     => green,
+    blue      => blue,
+    h_sync    => h_sync,
+    v_sync    => v_sync);
+
+
+  clk <= not clk after 10 ns;
+
+  process
+  begin
+
+    switch_n <= (others => '1');
+    rst      <= '1';
+    wait for 200 ns;
+
+    rst   <= '0';
+	 
+	 for i in 0 to 15 loop
+		switch_n <= std_logic_vector(to_unsigned(i, 4));
+		wait for 10 ns;
+	 end loop;
+	 
+	 
+    wait;
+
+	-- ADD YOUR OWN TESTS
+	
+  end process;
+
+end TB;

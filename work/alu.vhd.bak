@@ -1,0 +1,44 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity alu is
+  generic (
+    width : positive := 32);
+  port (
+    in1    : in  std_logic_vector(width-1 downto 0);
+    in2    : in  std_logic_vector(width-1 downto 0);
+    sel    : in  std_logic_vector(2 downto 0);
+	 shift  : in std_logic_vector(4 downto 0);
+    result : out std_logic_vector(width-1 downto 0));
+	 result_hi : out std_logic_vector((width/2) -1 downto 0);
+	 branch_taken : out std_logic;
+end alu;
+
+architecture BHV of alu is
+begin  -- GOOD1
+
+  process(in1, in2, sel, shift)
+    variable temp : unsigned(width-1 downto 0);
+  begin
+    case sel is
+		-- ADD
+      when "000" =>
+        temp := unsigned(in1)+unsigned(in2);
+		-- SUBTRACT
+      when "001" =>
+        temp := unsigned(in1)-unsigned(in2);
+
+      when "010" =>
+        temp := signed(in1 and in2);
+
+      when "011" =>
+        temp := signed(in1 or in2);
+
+      when others => null;
+    end case;
+
+    output <= std_logic_vector(temp);
+
+  end process;
+end BHV;

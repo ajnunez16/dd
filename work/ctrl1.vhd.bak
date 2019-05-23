@@ -1,0 +1,17 @@
+-- Alexander Nunez
+-- University of Florida
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity ctrl1 is
+    generic (
+        WIDTH : positive := 16);
+    port (
+	 
+		);
+end ctr1;
+
+architecture BHV of ctrl1
+end BHV;

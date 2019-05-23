@@ -1,0 +1,13 @@
+-- Alexander Nunez
+-- University of Florida
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity cla2 is
+	port (
+			x, y : in  std_logic_vector(WIDTH-1 downto 0);
+			cin  : in  std_logic;
+			s    : out std_logic_vector(WIDTH-1 downto 0);
+			cout : out std_logic);
+end cla2;
